@@ -42,6 +42,16 @@ const Tabledata = () => {
           </tbody>
         ))}
       </table>
+         {getData.map((element, index) => (
+          <div key={index}>
+              <p>{element.id}</p>
+              <p>{element.first_name}</p>
+              <p>{element.email}</p>
+              <p>
+                <img src={element.avatar} alt="avatar" />
+              </p>
+          </div>
+        ))}
     </div>
   );
 };
