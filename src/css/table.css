@@ -75,3 +75,13 @@ table {
     font-family: "Open Sans", sans-serif;
     line-height: 1.25;
   }
+  .header{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px ;
+  }
+  .icon{
+    font-size: 20px;
+    padding: 10px;
+    margin: 05px;
+  }
