@@ -22,14 +22,16 @@ const RightContainer = () => {
   }
   const navigate= useNavigate();
 
-  const handleSubmit =()=>{
-    // dispatch(addUser(data))
-    localStorage.setItem("full name",data.names )
-    localStorage.setItem("address",data.address )
-    localStorage.setItem("pan number",data.panNumber )
-    localStorage.setItem("email",data.emails )
-    localStorage.setItem("phone num",data.phoneNum )
+  const handleSubmit =(e)=>{
+    e.preventDefault();
+    dispatch(addUser(data))
     navigate("/show-next")
+
+    // localStorage.setItem("full name",data.names )
+    // localStorage.setItem("address",data.address )
+    // localStorage.setItem("pan number",data.panNumber )
+    // localStorage.setItem("email",data.emails )
+    // localStorage.setItem("phone num",data.phoneNum )
   }
   return (
     <div className='system-form'>
@@ -41,27 +43,26 @@ const RightContainer = () => {
     <div className="add-details">
     <div className="full-name">
       <label>Full Name:</label>
-      <input type="text" id="names" onChange={handleChange}/>
+      <input type="text" id="names" value={data.names} onChange={handleChange}/>
     </div>
     <div className="address">
       <label>Address:</label>
-      <input type="text" id="address"  onChange={handleChange}/>
+      <input type="text" id="address" value={data.address} onChange={handleChange}/>
     </div>
     <div className="pan-num">
       <label>PAN number:</label>
-      <input type="text" id="panNumber"  onChange={handleChange}/>
+      <input type="text" id="panNumber" value={data.panNumber}  onChange={handleChange}/>
     </div>
     <div className="email">
       <label>Email:</label>
-      <input type="text" id="emails"  onChange={handleChange}/>
+      <input type="text" id="emails"  value={data.emails} onChange={handleChange}/>
     </div>
     <div className="phone-num">
       <label>Phone number:</label>
-      <input type="text" id="phoneNum"  onChange={handleChange}/>
+      <input type="text" id="phoneNum" value={data.phoneNum} onChange={handleChange}/>
     </div>
     <div className='btn-submit'>
     <button type="submit"
-    
     onClick={handleSubmit}
      >Submit</button>
     </div>

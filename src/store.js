@@ -1,9 +1,12 @@
-import { legacy_createStore as createStore } from "redux";
+import { legacy_createStore as createStore , applyMiddleware} from "redux";
 import rootReducer from "./reducers/index";
+import {createLogger} from "redux-logger"
+
+const logger= createLogger({});
 
 const store = createStore(
   rootReducer, 
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  applyMiddleware(logger)
 );
 
 export default store;

@@ -6,16 +6,13 @@ const initialState = {
         default:
         return state;
         case "ADD_USER":
-        const {  data } = action.payload;
         return { 
           //...state is wriiten to return the already existing task
           ...state ,
           //the data: here reprresents the new data that is added
           list:[
-              ...state.data,
-              {
-                  data:data
-              }
+              ...state.list,
+                 action.payload
           ]
       };
       

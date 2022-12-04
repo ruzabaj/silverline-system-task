@@ -6,29 +6,21 @@ import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.m
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleLeft , faArrowAltCircleRight, faArrowCircleRight } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import "../../assets/css/table.css";
 
 const TestTable = () => {
-  const [getData, setGetData] = useState([]);
-
-    useEffect(() => {
-        axios
-        .get("https://reqres.in/api/users?page=2")
-        .then((res) => {
-          console.log(res.data.data);
-          setGetData(res.data.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }, [])
+const store = useSelector(state=>{
+  return{
+    userAdd: state.userAdd
+  }
+});
 
     const columns= [
-        {dataField: "id" , text:"ID"},
-        {dataField: "first_name" , text:"First Name", sort: true},
-        {dataField: "last_name" , text:" Last Name", sort: true},
-        {dataField: "email" , text:"Email"},
-        {dataField: "panNum" , text:"Pan Number"},
-        {dataField: "address" , text:"A ddress"},
+        {dataField: "names" , text:"First Name", sort: true},
+        {dataField: "emails" , text:"Email"},
+        {dataField: "panNumber" , text:"Pan Number"},
+        {dataField: "address" , text:"Address"},
         {dataField: "phoneNum" , text:"Phone Number"},
     ]
      const pagination=paginationFactory({
@@ -36,7 +28,7 @@ const TestTable = () => {
         paginationSize: 1 ,
         firstPageText:"<<",
         lastPageText:">>",
-        sizePerPage: 5,
+        sizePerPage: 1,
         prePageText:"<",
         nextPageText:">",
         showTotal: true
@@ -53,7 +45,9 @@ const TestTable = () => {
           onClick={BacktoHome}
           className="icon"
         />
-        <BootstrapTable bootstrap4 keyField='id' columns={columns} data={getData} pagination={ pagination}/>
+        <div className='responsive-table'>
+          <BootstrapTable bootstrap4 keyField='id' columns={columns} data={store.userAdd.list} pagination={ pagination}/>
+        </div>
         {/* <table>
             <thead>
                 <tr>
