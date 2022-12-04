@@ -37,9 +37,7 @@ const RightContainer = () => {
     <div className='system-form'>
     <h2>system pvt.ltd </h2>
     <small>Add your credentials</small>
-    <form 
-    //  onSubmit={handleSubmit}
-     >
+    <form >
     <div className="add-details">
     <div className="full-name">
       <label>Full Name:</label>
