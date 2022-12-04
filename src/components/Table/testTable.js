@@ -9,20 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const TestTable = () => {
   const [getData, setGetData] = useState([]);
-  const [fullName, setFullName] = useState("");
-  const [address, setaddress] = useState("");
-  const [panNum, setpanNum] = useState("");
-  const [email, setemail] = useState("");
-  const [phoneNum, setphoneNum] = useState("");
 
-  useEffect(() => {
-    setFullName(localStorage.getItem("full name"));
-    setaddress(localStorage.getItem("address"));
-    setpanNum(localStorage.getItem("pan number"));
-    setemail(localStorage.getItem("email"));
-    setphoneNum(localStorage.getItem("phone num"));
-  
-  }, []);
     useEffect(() => {
         axios
         .get("https://reqres.in/api/users?page=2")
@@ -37,7 +24,7 @@ const TestTable = () => {
 
     const columns= [
         {dataField: "id" , text:"ID"},
-        {dataField: "fullName" , text:"First Name", sort: true},
+        {dataField: "first_name" , text:"First Name", sort: true},
         {dataField: "last_name" , text:" Last Name", sort: true},
         {dataField: "email" , text:"Email"},
         {dataField: "panNum" , text:"Pan Number"},

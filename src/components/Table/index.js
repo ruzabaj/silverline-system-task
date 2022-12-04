@@ -9,7 +9,20 @@ import { useNavigate } from "react-router-dom";
 const Tabledata = () => {
 
  
+  const [fullName, setFullName] = useState("");
+  const [address, setaddress] = useState("");
+  const [panNum, setpanNum] = useState("");
+  const [email, setemail] = useState("");
+  const [phoneNum, setphoneNum] = useState("");
 
+  useEffect(() => {
+    setFullName(localStorage.getItem("full name"));
+    setaddress(localStorage.getItem("address"));
+    setpanNum(localStorage.getItem("pan number"));
+    setemail(localStorage.getItem("email"));
+    setphoneNum(localStorage.getItem("phone num"));
+  
+  }, []);
   const navigate = useNavigate();
  
 
