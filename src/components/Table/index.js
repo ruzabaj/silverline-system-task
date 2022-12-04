@@ -2,78 +2,149 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../../css/table.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowCircleLeft , faArrowAltCircleRight, faArrowCircleRight } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
+
 const Tabledata = () => {
-  const [getData, setGetData] = useState();
-  const [fullName, setFullName]= useState('');
-  const [address, setaddress]= useState('');
-  const [panNum, setpanNum]= useState('');
-  const [email, setemail]= useState('');
-  const [phoneNum, setphoneNum]= useState('');
+
+ 
 
   const navigate = useNavigate();
+ 
 
   const BacktoHome = () => {
     navigate("/");
   };
-  useEffect(() => {
-    setFullName(localStorage.getItem("full name" ))
-    setaddress(localStorage.getItem("address"))
-    setpanNum(localStorage.getItem("pan number"))
-    setemail(localStorage.getItem("email"))
-    setphoneNum(localStorage.getItem("phone num"))
-    axios
-      .get("https://reqres.in/api/users?page=2")
-      .then((res) => {
-        console.log(res.data.data);
-        setGetData(res.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  const BacktoNextTable = () => {
+    navigate("/show-next-table");
+  };
+  const BacktoNext = () => {
+    navigate("/show-next");
+  };
+ 
+
+  const list = [
+    {
+      id: '1',
+      name: 'VSCode',
+      deadline: 2020,
+      type: 'SETUP',
+      isComplete: true,
+    },
+    {
+      id: '2',
+      name: 'JavaScript',
+      deadline: 2021,
+      type: 'LEARN',
+      isComplete: true,
+    },
+    {
+      id: '3',
+      name: 'JavaScript',
+      deadline: 2021,
+      type: 'LEARN',
+      isComplete: true,
+    },
+    {
+      id: '4',
+      name: 'JavaScript',
+      deadline: 2021,
+      type: 'LEARN',
+      isComplete: true,
+    },
+    {
+      id: '5',
+      name: 'JavaScript',
+      deadline: 2021,
+      type: 'LEARN',
+      isComplete: true,
+    },
+    {
+      id: '6',
+      name: 'JavaScript',
+      deadline: 2021,
+      type: 'LEARN',
+      isComplete: true,
+    },
+    {
+      id: '7',
+      name: 'JavaScript',
+      deadline: 2021,
+      type: 'LEARN',
+      isComplete: true,
+    },
+    {
+      id: '8',
+      name: 'JavaScript',
+      deadline: 2021,
+      type: 'LEARN',
+      isComplete: true,
+    },
+    {
+      id: '9',
+      name: 'React',
+      deadline: 2022,
+      type: 'LEARN',
+      isComplete: false,
+    }
+  ];
+
+
   return (
     <div>
       <div className="header">
         <h2>Tabledata</h2>
-        <FontAwesomeIcon icon={faArrowCircleLeft} onClick={BacktoHome} className="icon" />
+        <FontAwesomeIcon
+          icon={faArrowCircleLeft}
+          onClick={BacktoHome}
+          className="icon"
+        />
       </div>
-      <table>
+     
+      <table className="table table-hover" id="example">
         <thead>
           <tr>
-            <th>id</th>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Email</th>
-            <th></th>
+            <th scope="col">#</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Pan Number</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Address</th>
           </tr>
         </thead>
-        {/* {getData.map((ele, index) => (
-          <tbody key={index}>
-            <tr>
-              <th>{ele.id}</th>
-              <th>{ele.first_name}</th>
-              <th>{ele.email}</th>
-              <th>
-                <img src={ele.avatar} alt="avatar" />
-              </th>
-            </tr>
-          </tbody>
-        ))} */}
+        <tbody>
+        {list.map((element, index)=>(
+          <tr>
+            <th scope="row">{element.id}</th>
+            <td>{element.name}</td>
+            <td>{element.deadline}</td>
+            <td>{element.isComplete}</td>
+            <td>{element.type}</td>
+            <td>patan</td>
+          </tr>
+        ))}
+        <tr>
+        <th scope="row">1</th>
+            <th scope="row">{fullName}</th>
+            <td>{email}</td>
+            <td>{panNum}</td>
+            <td>{phoneNum}</td>
+            <td>{address}</td>
+            <td>patan</td>
+          </tr>
+        </tbody>
       </table>
-      {/* {getData.map((element, index) => (
-          <div key={index}>
-              <p>{element.id}</p>
-              <p>{element.first_name}</p>
-              <p>{element.email}</p>
-              <p>
-                <img src={element.avatar} alt="avatar" />
-              </p>
-          </div>
-        ))} */}
-        <h3>{fullName}{panNum}</h3>
+      <FontAwesomeIcon
+          icon={faArrowCircleRight}
+          onClick={BacktoNextTable}
+          className="icon"
+        />
+           <FontAwesomeIcon
+          icon={faArrowCircleRight}
+          onClick={BacktoNext}
+          className="icon"
+        />
     </div>
   );
 };

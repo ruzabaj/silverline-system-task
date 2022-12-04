@@ -1,21 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Table from "./components/Table";
-import App from "./App"
-
+import { Provider } from "react-redux";
+import store from "./store";
+import MainRouter from "./router";
+import App from"./App";
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
-  <React.StrictMode>
-    <Router>
-      <Routes>
-        <Route path="/" element={<App/>}/>
-        <Route path="/show-table" element={<Table/>}/>
-      </Routes>
-    </Router>
-    {/* <App/> */}
-  </React.StrictMode>
+  <Provider store={store}>
+    <React.StrictMode>
+      <MainRouter />
+      {/* <App/> */}
+    </React.StrictMode>
+  </Provider>
 );
 
 reportWebVitals();
